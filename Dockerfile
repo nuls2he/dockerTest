@@ -1,2 +1,12 @@
-# Step:1 Centos:7 (base image)
-FROM centos:7
+FROM ubuntu:14.04
+MAINTAINER lee won <leewo@mih.co.kr>
+RUN apt-get update
+RUN apt-get install -y nginx
+RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
+RUN chown -R www-data:www-data /var/lib/nginx
+
+VOLUMNE ["/data", "/etc/nginx/site-enabled", "/var/log/nginx"]
+WORKDIR /etc/nginx
+CMD ["nginx"]
+EXPOSE 80
+EXPOSE 443
