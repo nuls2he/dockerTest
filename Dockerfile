@@ -5,7 +5,7 @@ RUN apt-get install -y nginx
 RUN echo "\ndaemon off;" >> /etc/nginx/nginx.conf
 RUN chown -R www-data:www-data /var/lib/nginx
 
-VOLUMNE ["/data", "/etc/nginx/site-enabled", "/var/log/nginx"]
+VOLUME ["/data", "/etc/nginx/site-enabled", "/var/log/nginx"]
 WORKDIR /etc/nginx
 CMD ["nginx"]
 EXPOSE 80
